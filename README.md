@@ -3,17 +3,17 @@
 # Money Detection
 * Origin : [link](https://github.com/A3M4/Coin-Counter)
 
-# Image Web Crawling
+# Image preprocessing
 * Origin : [link](https://pino93.blog.me/221707621434)
-## 전처리 이미지 모으기
-1. 
+## Image Web Crawling
+1. 파이썬 모듈 설치
 ```pip
 $pip install google_images_download
 $pip install selenium
 ```
 
 2. 크롬 버전에 맞게 Chromedriver.exe 설치
-- 버전 확인 : 우측 상단 메뉴 --> 도움말 --> Chrome 정보)
+- 버전 확인 : 우측 상단 메뉴 → 도움말 → Chrome 정보)
 - 설치 링크 : https://chromedriver.chromium.org/downloads
 
 3. 파이썬 파일 생성 (imgCrawler.py)
