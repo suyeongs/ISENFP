@@ -3,7 +3,7 @@
 # Money Detection
 * Origin : [link](https://github.com/A3M4/Coin-Counter)
 
-# Image preprocessing
+# Image reprocessing
 * Origin : [link](https://pino93.blog.me/221707621434)
 ## Image Web Crawling
 1. 파이썬 모듈 설치
@@ -43,5 +43,5 @@ except:
 ```
 4. 파일 실행
 ```pip
-python imgCrawler.py
+$python imgCrawler.py
 ```
