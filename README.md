@@ -74,17 +74,16 @@ pip3 install pandas
 
 ## How To Use
 1. Labelling and Create Dataset
-* training_data, test_data에 image파일을 적절히 분배하여 넣는다.
-* [LabelImg](https://tzutalin.github.io/labelImg/)를 이용하여 각 image들에 있는 money label 정보가 담긴 xml파일들을 얻는다.
-* xml 파일을 각 training_data, test_data 폴더에 옮겨 놓는다. (한 image와 한 xml파일이 한 쌍이다.)
-* 1_xml_to_csv.py 를 실행시킨 후 2_generate_tfrecords.py를 실행시킨다.
+    * training_data, test_data에 image파일을 적절히 분배하여 넣는다.
+    * [LabelImg](https://tzutalin.github.io/labelImg/)를 이용하여 각 image들에 있는 money label 정보가 담긴 xml파일들을 얻는다.
+    * xml 파일을 각 training_data, test_data 폴더에 옮겨 놓는다. (한 image와 한 xml파일이 한 쌍이다.)
+    * 1_xml_to_csv.py 를 실행시킨 후 2_generate_tfrecords.py를 실행시킨다.
 ```
 python3 1_xml_to_csv.py
 python3 2_generate_tfrecords.py
 ```
 2. Training the Model
-* ssd_inception_v2_coco.config 파일을 알맞게 수정한다.
-    * num_classes, num_steps, batch_size 등 요소들을 알맞게 수정한다.
+    * ssd_inception_v2_coco.config 파일에서 num_classes, num_steps, batch_size 등의 값들을 알맞게 수정한다.
 * 3_train.py 를 실행시킨다.
 3. 
 ```
