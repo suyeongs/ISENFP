@@ -92,5 +92,6 @@ python3 4_export_inference_graph.py
 
 ## Future Improvements
 * 크롤링한 이미지들을 전체적으로 resize한 후에 라벨링 작업 하는 것을 추천한다.
+'''
 python resize_images.py --target-size (400,250)
-
+'''
