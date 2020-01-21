@@ -16,7 +16,7 @@ $pip install selenium
 - 버전 확인 : 우측 상단 메뉴 → 도움말 → Chrome 정보)
 - 설치 링크 : https://chromedriver.chromium.org/downloads
 
-3. 파이썬 파일 생성 (imgCrawler.py)
+3. 파이썬 파일 생성 (crawler.py)
 ```python
 from google_images_download import google_images_download
 
@@ -43,5 +43,5 @@ except:
 ```
 4. 파일 실행
 ```pip
-$python imgCrawler.py
+$python crawler.py
 ```
