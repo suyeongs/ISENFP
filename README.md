@@ -1,8 +1,5 @@
 # ISENFP
 
-# Money Detection
-* Origin : [link](https://github.com/A3M4/Coin-Counter)
-
 # Image reprocessing
 * Origin : [link](https://pino93.blog.me/221707621434)
 ## Image Web Crawling
@@ -45,3 +42,53 @@ except:
 ```pip
 $python crawler.py
 ```
+
+
+# Money Detection
+* Origin : [Coin-Counter](https://github.com/A3M4/Coin-Counter)
+## Requirment
+1. ISENFP repository 를 git clone 한다.
+```
+git clone https://github.com/suyeongs/ISENFP.git
+```
+
+2. Tensorflow models 를 git clone 하고, 환경을 셋팅한다.
+```
+git clone https://github.com/tensorflow/models.git
+```
+- 환경 셋팅 참고 링크 : [Tensorflow Models Installation](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md)
+- 위의 링크에서 pip 말고, pip3으로 설치를 진행한다.
+- 위의 링크에서 COCO API installation를 하던 중 make 에서 에러가 나면 cat Makefile 로 스크립트 하나씩 실행한다. 여기서 또한 python 말고, python3으로 고쳐서 실행한다.
+
+3. ssd_inception_v2_coco tar파일을 다운받아서 Coin-Counter 폴더에 넣고 압축을 푼다.
+- 다운로드 및 설명 링크 : [ssd_inception_v2_coco]
+(https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
+
+4. OpenCV 라이브러리를 설치한다.
+- [ubuntu18.04에서 opencv 설치하기](https://webnautes.tistory.com/1186)
+
+5. 기타 필요한 라이브러리를 설치한다.
+```
+pip3 install pandas
+```
+
+## How To Use
+1. Labelling and Create Dataset
+(1) training_data, test_data에 image파일을 적절히 분배하여 넣는다.
+(2) [LabelImg](https://tzutalin.github.io/labelImg/)를 이용하여 각 image들에 있는 money label 정보가 담긴 xml파일들을 얻는다.
+(3) xml 파일을 각 training_data, test_data 폴더에 옮겨 놓는다. (한 image와 한 xml파일이 한 쌍이다.)
+(4) 1_xml_to_csv.py 를 실행시킨 후 2_generate_tfrecords.py를 실행시킨다.
+```
+python3 1_xml_to_csv.py
+python3 2_generate_tfrecords.py
+```
+2. Training the Model
+(1) ssd_inception_v2_coco.config 파일을 알맞게 수정한다.
+ * num_classes, num_steps, batch_size 등 요소들을 알맞게 수정한다.
+(2) 3_train.py 를 실행시킨다.
+3. 
+```
+python3 4_export_inference_graph.py
+```
+
+## Future Improvements
