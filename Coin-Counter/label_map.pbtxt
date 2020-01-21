@@ -1,0 +1,35 @@
+item {
+  id: 1
+  name: 'won'
+  display_name: 'won'
+}
+item {
+  id: 2
+  name: 'dollar_cent_1'
+  display_name: 'dollar_cent_1'
+}
+item {
+  id: 3
+  name: 'euro_1'
+  display_name: 'euro_1'
+}
+item {
+  id: 4
+  name: 'ruble'
+  display_name: 'ruble'
+}
+item {
+  id: 5
+  name: 'yen'
+  display_name: 'yen'
+}
+item {
+  id: 6
+  name: 'euro_cent_1'
+  display_name: 'euro_cent_1'
+}
+item {
+  id: 7
+  name: 'koruna'
+  display_name: 'koruna'
+}
