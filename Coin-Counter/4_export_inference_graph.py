@@ -21,7 +21,8 @@ INPUT_SHAPE = None
 PIPELINE_CONFIG_LOC =  os.getcwd() + "/" + "ssd_inception_v2_coco.config"
 
 # the final checkpoint result of the training process
-TRAINED_CHECKPOINT_PREFIX_LOC = os.getcwd() + "/training_data/model.ckpt-100"   #change the step number based on config file
+TRAINED_CHECKPOINT_PREFIX_LOC = os.getcwd() + "/training_data/model.ckpt-1000"
+#change the step number based on config file
 
 # the output directory to place the inference graph data, note that it's ok if this directory does not already exist
 # because the call to export_inference_graph() below will create this directory if it does not exist already

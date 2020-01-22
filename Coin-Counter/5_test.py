@@ -3,16 +3,23 @@ import os
 import tensorflow as tf
 import cv2
 import random
+import csv
+import seaborn as sn
+import pandas as pd
+import matplotlib.pyplot as plt
 
+from sklearn.metrics import confusion_matrix
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 from distutils.version import StrictVersion
 
 # module level variables ##############################################################################################
-TEST_IMAGE_DIR = os.getcwd() +  "/final_test_images"
+TEST_IMAGE_DIR = os.getcwd() + "/training_images"
 FROZEN_INFERENCE_GRAPH_LOC = os.getcwd() + "/inference_graph/frozen_inference_graph.pb"
 LABELS_LOC = os.getcwd() + "/" + "label_map.pbtxt"
 NUM_CLASSES = 7
+SAVE_IMAGE_DIR = os.getcwd() + "/final_test_images"
+TRAINING_DATA_DIR = os.getcwd() + "/training_data/"
 
 #######################################################################################################################
 def main():
@@ -39,11 +46,27 @@ def main():
                                                                 use_display_name=True)
     category_index = label_map_util.create_category_index(categories)
 
+    # open the file in universal line ending mode
+    with open(TRAINING_DATA_DIR+'new_train_labels.csv', 'rU') as infile:
+        # read the file as a dictionary for each row ({header : value})
+        reader = csv.DictReader(infile)
+        data = {}
+        for row in reader:
+            for header, value in row.items():
+                try:
+                    data[header].append(value)
+                except KeyError:
+                    data[header] = [value]
+
+    # extract the variables you want
+    expected = data['class']
+    predicted = []
+
+    imageFileNames = data['filename']
     imageFilePaths = []
-    for imageFileName in os.listdir(TEST_IMAGE_DIR):
+    for imageFileName in imageFileNames:
         if imageFileName.endswith(".jpg"):
             imageFilePaths.append(TEST_IMAGE_DIR + "/" + imageFileName)
-
 
     with detection_graph.as_default():
         with tf.Session(graph=detection_graph) as sess:
@@ -55,6 +78,7 @@ def main():
 
                 if Image_Coin_Counter is None:
                     print("error reading file " + image_path)
+                    predicted.append("Unknown")
                     continue
                 # end if
 
@@ -83,12 +107,13 @@ def main():
                                                                    category_index,
                                                                    use_normalized_coordinates=True,
                                                                    line_thickness=8)
-                coin = [category_index.get(value) for index, value in enumerate(classes[0]) if scores[0, index] > 0.75]
+                coin = [category_index.get(value) for index, value in enumerate(classes[0]) if scores[0, index] > 0.4]
                 print(coin)
 
                 # make result text
-                for i in range(0, int(len(coin))):
-                    labelname = str(coin[i]['name'])
+                if len(coin) > 0:
+                    labelname = str(coin[0]['name'])
+                    predicted.append(labelname)
                     if labelname == "ruble":
                         text = "Ruble(BYR)"
                     elif labelname == "koruna":
@@ -103,39 +128,30 @@ def main():
                         text = "Yen(JPY)"
                     elif labelname == "won":
                         text = "Won(KRW)"
+                else:
+                    text = "I can't find money"
+                    predicted.append("Unknown")
 
                 print("Final Result Text : "+text)
+                cv2.imwrite(SAVE_IMAGE_DIR + r'/' + str(random.random())[2:] + r'.jpg', Image_Coin_Counter)
 
-                """
-                ToonieCount = []
-                LoonieCount = []
-                
-                for i in range(0, int(len(coin))):
-                    if str(coin[i]['name']) == "Toonie":
-                        ToonieCount.append("t")
-                    else:
-                        LoonieCount.append("l")
-                
-                # Singular & Plural
-                toonie = " Toonies"
-                loonie = " Loonies"
-                if len(ToonieCount) <= 1:
-                    toonie = " Toonie"
-                if len(LoonieCount) <= 1:
-                    loonie = " Loonie"
-                
-                # Add text to image
-                text = "You have " + str(len(ToonieCount)) + toonie + " and " + str(len(LoonieCount)) + loonie \
-                       +", " + str(len(ToonieCount)+len(ToonieCount)+len(LoonieCount)) + " Bucks in Total."
-                
-                cv2.putText(img=Image_Coin_Counter, text=text, org=(10, 50),
-                            fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.1, color=[0, 0, 0], lineType=4,
-                            thickness=8)
-                cv2.putText(img=Image_Coin_Counter, text=text, org=(10, 50),
-                            fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.1, color=[255, 255, 255], lineType=4,
-                            thickness=2)
-                cv2.imwrite(TEST_IMAGE_DIR + r'/' + str(random.random())[2:] + r'.jpg', Image_Coin_Counter)
-                """
+    results = confusion_matrix(expected, predicted)
+    print(results)
+    print(expected)
+    print(predicted)
+
+    df_cm = pd.DataFrame(results,
+    index = [i for i in ['Unknown', 'dollar_cent_1', 'euro_1', 'euro_cent_1', 'koruna', 'ruble', 'won', 'yen']],
+    columns = [i for i in ['Unknown', 'dollar_cent_1', 'euro_1', 'euro_cent_1', 'koruna', 'ruble', 'won', 'yen']])
+    sn.set(font_scale=1.1) # for label size
+    sn.heatmap(df_cm, annot=True, annot_kws={"size": 11}) # font size
+
+    plt.ylabel('Expected Label')
+    plt.xlabel('Predicted Label')
+    plt.title('Confusion Matrix')
+    plt.show()
+
 
 if __name__ == "__main__":
     main()
+
