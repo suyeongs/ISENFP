@@ -85,7 +85,7 @@ python3 2_generate_tfrecords.py
 ```
 2. Training the Model
     * ssd_inception_v2_coco.config 파일에서 num_classes, num_steps, batch_size 등의 값들을 알맞게 수정한다.
-3_train.py 를 실행시킨다.
+3. 3_train.py 를 실행시킨다.
 ```
 python3 4_export_inference_graph.py
 ```
