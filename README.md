@@ -1,3 +1,4 @@
+# Coin Counter
 # ISENFP
 
 # Image reprocessing
@@ -46,7 +47,7 @@ $python crawler.py
 
 # Money Detection
 * Origin : [Coin-Counter](https://github.com/A3M4/Coin-Counter)
-## Requirment
+## Requirement
 1. ISENFP repository 를 git clone 한다.
 ```
 git clone https://github.com/suyeongs/ISENFP.git
@@ -85,8 +86,9 @@ python3 2_generate_tfrecords.py
 2. Training the Model
     * ssd_inception_v2_coco.config 파일에서 num_classes, num_steps, batch_size 등의 값들을 알맞게 수정한다.
 * 3_train.py 를 실행시킨다.
-3. 
 ```
+3. 
+
 python3 4_export_inference_graph.py
 ```
 
