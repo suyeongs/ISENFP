@@ -1,12 +1,14 @@
-## Coin Counter
 ## Money Detection
-# Image reprocessing
-* Origin : [link](https://pino93.blog.me/221707621434)
 
 ## Data Flow Chart
 ![dataflowchart](https://user-images.githubusercontent.com/67955977/131221867-3e9b0eef-d01b-4445-ae47-57c4bfe62d94.png)
 
-## Image Web Crawling
+
+## Image Data Preprocessing
+* 구글 이미지 크롤링 (Origin : [link](https://pino93.blog.me/221707621434))
+* google_images_download 라이브러리 사용
+
+# Image Web Crawling
 1. 파이썬 모듈 설치
 ```pip
 $pip install google_images_download
@@ -48,7 +50,7 @@ $python crawler.py
 ```
 
 
-# Money Detection
+## Money Detection
 * Origin : [Coin-Counter](https://github.com/A3M4/Coin-Counter)
 ## Requirement
 1. ISENFP repository 를 git clone 한다.
