@@ -1,4 +1,11 @@
-## Money Detection
+# Money Detection
+## Team
+* 김민지(Minji Kim), 방수영, 이하람, 장성은
+
+## Project
+* 목적 :
+* 개발 배경 :
+* 목표
 
 ## Data Flow Chart
 ![dataflowchart](https://user-images.githubusercontent.com/67955977/131221867-3e9b0eef-d01b-4445-ae47-57c4bfe62d94.png)
@@ -114,3 +121,5 @@ python resize_images.py --target-size (400,250)
 가로축은 predict를 나타내고 세로축은 expect이다.  
 따라서 좌측 상단에서부터 우측 하단까지의 대각선에 색깔이 나타날 수록 좋은 모델임을 나타낸다.  
 중간쪽으로 색이 밝을 수록 정답을 잘 맞춘 것이고, 엔화와 우리나라 돈, 코루나에서 정확성이 높게 나왔다.  
+
+## 발전 방향
