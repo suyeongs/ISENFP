@@ -114,7 +114,7 @@ python resize_images.py --target-size (400,250)
 ```
 
 
-# Raspberry PI Web Server
+## Raspberry PI Web Server
 
 ## Confusion Matrix
 ![confusion matrix](https://user-images.githubusercontent.com/67955977/131221905-4fdf568a-5333-4d09-8a0a-0c2b128f5604.PNG)
