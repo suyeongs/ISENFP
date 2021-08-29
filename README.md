@@ -1,6 +1,7 @@
-# Money Detection
-## Team
-* 김민지(Minji Kim), 방수영, 이하람, 장성은
+# Money Detection  
+
+### Team
+* 김민지(Minji Kim), 방수영, 이하람, 장성은  
 
 ## Project
 ![c](https://user-images.githubusercontent.com/67955977/131254015-d512fad6-7f88-4461-baea-b881f5e7c34d.png)
@@ -9,11 +10,12 @@
 * 여러 나라를 여행할 때 화폐를 잘 구분하지 못하며 발생하는 환전 사기 등의 문제를 예방한다.  
       
       
-## System Flow Diagram
-![SystemFlowChart](https://user-images.githubusercontent.com/67955977/131254185-69d0c697-c3af-4ebf-838c-88e4fe75af97.PNG)
+## System Flow Diagram  
+![SystemFlowChart](https://user-images.githubusercontent.com/67955977/131254185-69d0c697-c3af-4ebf-838c-88e4fe75af97.PNG)  
 
-## Data Flow Diagram
-![dataflowchart](https://user-images.githubusercontent.com/67955977/131254179-71be2d00-6b60-40c8-be82-25079fb6f2f8.png)
+
+## Data Flow Diagram  
+![dataflowchart](https://user-images.githubusercontent.com/67955977/131254179-71be2d00-6b60-40c8-be82-25079fb6f2f8.png)  
 
 
 ## Image Data Preprocessing
@@ -62,11 +64,16 @@ except:
 $python crawler.py
 ```
 
+
 ## Image Labelling
 ![imagelabel](https://user-images.githubusercontent.com/67955977/131254223-19191b1d-a788-41f8-b59b-9b5de9bcf86a.PNG)
+* [labelimg.exe](https://github.com/tzutalin/labelImg) 사용
+
 
 ## Money Detection
 * Origin : [Coin-Counter](https://github.com/A3M4/Coin-Counter)
+
+
 ## Requirement
 1. ISENFP repository 를 git clone 한다.
 ```
@@ -115,6 +122,7 @@ python3 3_train.py
 python3 4_export_inference_graph.py
 ```
 
+
 ## Future Improvements
 * 크롤링한 이미지들을 전체적으로 resize한 후에 라벨링 작업 하는 것을 추천한다. 
 ```
@@ -123,6 +131,7 @@ python resize_images.py --target-size (400,250)
 
 
 ### Raspberry PI Web Server
+
 
 ## Confusion Matrix
 ![confusion matrix](https://user-images.githubusercontent.com/67955977/131254166-fd9c2be0-be08-4065-ba55-fbda0dee1189.PNG)
