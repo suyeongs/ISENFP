@@ -3,19 +3,25 @@
 * 김민지(Minji Kim), 방수영, 이하람, 장성은
 
 ## Project
-* 목적 :
-* 개발 배경 :
-* 목표
+![c](https://user-images.githubusercontent.com/67955977/131254015-d512fad6-7f88-4461-baea-b881f5e7c34d.png)
+* Money Detection : 나라별 화폐 구분 서비스
+* 카메라로 화폐를 촬영하면 어떤 국가의 화폐인지 알 수 있다.
+* 여러 나라를 여행할 때 화폐를 잘 구분하지 못하며 발생하는 환전 사기 등의 문제를 예방한다.  
+      
+      
+## System Flow Diagram
+![SystemFlowChart](https://user-images.githubusercontent.com/67955977/131254185-69d0c697-c3af-4ebf-838c-88e4fe75af97.PNG)
 
-## Data Flow Chart
-![dataflowchart](https://user-images.githubusercontent.com/67955977/131221867-3e9b0eef-d01b-4445-ae47-57c4bfe62d94.png)
+## Data Flow Diagram
+![dataflowchart](https://user-images.githubusercontent.com/67955977/131254179-71be2d00-6b60-40c8-be82-25079fb6f2f8.png)
 
 
 ## Image Data Preprocessing
 * 구글 이미지 크롤링 (Origin : [link](https://pino93.blog.me/221707621434))
 * google_images_download 라이브러리 사용
 
-# Image Web Crawling
+
+## Image Web Crawling
 1. 파이썬 모듈 설치
 ```pip
 $pip install google_images_download
@@ -56,6 +62,8 @@ except:
 $python crawler.py
 ```
 
+## Image Labelling
+![imagelabel](https://user-images.githubusercontent.com/67955977/131254223-19191b1d-a788-41f8-b59b-9b5de9bcf86a.PNG)
 
 ## Money Detection
 * Origin : [Coin-Counter](https://github.com/A3M4/Coin-Counter)
@@ -114,10 +122,10 @@ python resize_images.py --target-size (400,250)
 ```
 
 
-## Raspberry PI Web Server
+### Raspberry PI Web Server
 
 ## Confusion Matrix
-![confusion matrix](https://user-images.githubusercontent.com/67955977/131221905-4fdf568a-5333-4d09-8a0a-0c2b128f5604.PNG)
+![confusion matrix](https://user-images.githubusercontent.com/67955977/131254166-fd9c2be0-be08-4065-ba55-fbda0dee1189.PNG)
 가로축은 predict를 나타내고 세로축은 expect이다.  
 따라서 좌측 상단에서부터 우측 하단까지의 대각선에 색깔이 나타날 수록 좋은 모델임을 나타낸다.  
 중간쪽으로 색이 밝을 수록 정답을 잘 맞춘 것이고, 엔화와 우리나라 돈, 코루나에서 정확성이 높게 나왔다.  
