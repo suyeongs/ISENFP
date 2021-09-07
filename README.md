@@ -105,22 +105,25 @@ pip3 install pandas
     * training_data, test_data에 image파일을 적절히 분배하여 넣는다.
     * [LabelImg](https://tzutalin.github.io/labelImg/)를 이용하여 각 image들에 있는 money label 정보가 담긴 xml파일들을 얻는다.
     * xml 파일을 각 training_data, test_data 폴더에 옮겨 놓는다. (한 image와 한 xml파일이 한 쌍이다.)
-    * 1_xml_to_csv.py 를 실행시킨 후 2_generate_tfrecords.py를 실행시킨다.
 ```
 python3 1_xml_to_csv.py
+```
+2. Generate csv file to tfrecord files
+    * 1_xml_to_csv.py 를 실행시킨 후 2_generate_tfrecords.py를 실행시킨다.
+```
 python3 2_generate_tfrecords.py
 ```
-2. Training the Model
+3. Training the Model
     * ssd_inception_v2_coco.config 파일에서 num_classes, num_steps, batch_size 등의 값들을 알맞게 수정한다.
-    
-3. 3_train.py 를 실행시킨다.
+    * 3_train.py 를 실행시킨다.
 ```
 python3 3_train.py
 ```
-4. 
+4. Export inference graph
 ```
 python3 4_export_inference_graph.py
 ```
+5. Final test
 
 
 ## Future Improvements
@@ -139,3 +142,7 @@ python resize_images.py --target-size (400,250)
 따라서 좌측 상단에서부터 우측 하단까지의 대각선에 색깔이 나타날 수록 좋은 모델임을 나타낸다.  
 중간쪽으로 색이 밝을 수록 정답을 잘 맞춘 것이고, 엔화와 우리나라 돈, 코루나에서 정확성이 높게 나왔다.  
 
+## Improvement Action
+1. KRW 변환 - 다른 국가 화폐를 환율을 반영하여 원화로 변환하여 display
+2. Accuracy - 정확성 향상을 위하여 더 많은 data를 수집하여 학습
+3. 서비스 확장 - 원, 엔화, 달러, 체코, 코루나를 제외한 다른 국가의 화폐도 추가
